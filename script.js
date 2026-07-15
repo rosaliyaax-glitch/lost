@@ -18,7 +18,7 @@ const albumTracks = [
         url: "https://youtu.be/bnVkf-z28YU?si=hK_ZvuchpvdfXT8C&t=6",
         embedId: "bnVkf-z28YU",
         startTime: 6,
-        content: `Okay but I still need to talk about something... \nThe fact that you actually called me Darkest 😭\nLike excuse me sir???\nDo you remember that?? How could you do that to me 😔\n*insert the most dramatic sad face ever*\nI was just there existing and you decided that "Darkest" was my name now 💀\nYou really looked at me and thought: "Yep. That's the one."\n\nBut tbh.. I can't even be mad cuz somehow all your weird nicknames became some of my favourite memories.(yea I'm def lovesick gd daym it 😭😭) but srsly how cud u call me tenge cmonn I mean like tapirs are cute ok :3 see I ws calling u cute and U U U LIT STRTED CALLING ME TENGE :( frick uuu I hate UU (pleading face) ok ok but when u think abt it tapir and tenge lwk goated goated duo fr lolol ehh ik u thgt I ws annoying u wanted to get rid of me fss GUESS WHT THOO THTS NEVER GONNA HAPPEN UR STUCK WITH MEE BLEHHHH :P`
+        content: `Okay but I still need to talk about something... \nThe fact that you actually called me Darkest 😭\nLike excuse me sir???\nDo you remember that?? How could you do that to me 😔\n*insert the most dramatic sad face ever*\nI was just there existing and you decided that "Darkest" was my name now 💀\nYou really looked at me and thought: "Yep. That's the one."\n\nBut tbh.. I can't even be mad cuz somehow all your weird nicknames became some of my favourite memories.(yea I'm def lovesick gd daym it 😭😭) but srsly how cud u call me tenge cmonn I mean like tapirs are cute ok :3 see I ws calling u cute and U U U LIT STRTED CALLING ME TENGE :( frick uuu I hate UU -_- ok ok but when u think abt it tapir and tenge lwk goated goated duo fr lolol ehh ik u thgt I ws annoying u wanted to get rid of me fss GUESS WHT THOO THTS NEVER GONNA HAPPEN UR STUCK WITH MEE BLEHHHH :P`
     },
     {
         id: "3",
@@ -92,6 +92,32 @@ const albumTracks = [
     }
 ];
 
+// --- Optimized YouTube API Global Variable Initialization ---
+let ytPlayer = null;
+let isPlayerReady = false;
+
+// Custom function to load iframe from the privacy/ad-restricted domain wrapper
+window.onYouTubeIframeAPIReady = function() {
+    ytPlayer = new YT.Player('audio-player-placeholder', {
+        height: '1',
+        width: '1',
+        videoId: albumTracks[0].embedId,
+        playerVars: {
+            'host': 'https://www.youtube-nocookie.com', // Bypasses default tracking ad networks
+            'autoplay': 0,
+            'controls': 0,
+            'disablekb': 1,
+            'fs': 0,
+            'rel': 0,
+            'modestbranding': 1,
+            'iv_load_policy': 3 // Disables popup annotations completely for speed
+        },
+        events: {
+            'onReady': () => { isPlayerReady = true; }
+        }
+    });
+}
+
 // --- Render Tracklist ---
 const tracklistContainer = document.getElementById('main-tracklist');
 albumTracks.forEach(track => {
@@ -111,7 +137,7 @@ albumTracks.forEach(track => {
     tracklistContainer.appendChild(trackElement);
 });
 
-// --- Scroll and Automated Track Audio Swapping Logic ---
+// --- Scroll & Dynamic Audio Swapping Logic ---
 let typeInterval;
 function openScroll(track) {
     const modal = document.getElementById('scroll-modal');
@@ -120,7 +146,6 @@ function openScroll(track) {
     const vinyl = document.getElementById('player-vinyl');
     const trackName = document.getElementById('player-track-name');
     const ytLink = document.getElementById('player-yt-link');
-    const audioBridge = document.getElementById('youtube-audio-bridge');
 
     title.innerText = `${track.flower} ${track.title}`;
     trackName.innerText = track.title;
@@ -141,9 +166,16 @@ function openScroll(track) {
         }
     }, 25);
 
-    // Audio Engine Update: Cuts any old music frame instantly and updates to the new track & exact timestamp
-    audioBridge.src = `https://www.youtube.com/embed/${track.embedId}?autoplay=1&start=${track.startTime}&mute=0`;
-    vinyl.style.animationPlayState = 'running';
+    // Audio Engine Update: Loads data with low resolution attributes to trigger near-instant buffering
+    if (isPlayerReady && ytPlayer) {
+        ytPlayer.loadVideoById({
+            videoId: track.embedId,
+            startSeconds: track.startTime,
+            suggestedQuality: 'small' // Forces low video overhead since we only need the audio stream
+        });
+        ytPlayer.playVideo();
+        vinyl.style.animationPlayState = 'running';
+    }
 }
 
 // Global safety mapping for exit actions
@@ -151,8 +183,10 @@ window.closeScroll = function() {
     clearInterval(typeInterval);
     document.getElementById('scroll-modal').style.display = 'none';
     document.getElementById('player-vinyl').style.animationPlayState = 'paused';
-    // Terminates stream instantly upon sheet minimization
-    document.getElementById('youtube-audio-bridge').src = "";
+    
+    if (ytPlayer && typeof ytPlayer.pauseVideo === 'function') {
+        ytPlayer.pauseVideo();
+    }
 }
 
 // --- Background Visual Environment ---
