@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Lost Album 📜✨</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <canvas id="ambient-canvas"></canvas>
+
+    <iframe id="youtube-audio-bridge" src="" allow="autoplay"></iframe>
+
+    <div class="album-container">
+        <div class="wax-seal-container">
+            <img src="album_cover.jpg" alt="Our Album Cover" class="album-cover-img">
+            <div class="wax-seal-stamp">💝</div>
+        </div>
+        
+        <div class="album-header">
+            <h1>THE LOST ALBUM</h1>
+            <p class="album-note">💿 Album Note: HAPPY BIRTHDAY MY LOVEE!!! Thanks for not getting rid of me, even when I was a "dude" named Tenge😭🙏…</p>
+        </div>
+
+        <div class="track-list" id="main-tracklist"></div>
+    </div>
+
+    <div class="scroll-overlay" id="scroll-modal">
+        <div class="scroll-paper">
+            <div class="scroll-header">
+                <h2 id="modal-track-title">Track Title</h2>
+                <button class="close-btn" onclick="closeScroll()">✕</button>
+            </div>
+            
+            <div class="scroll-body" id="modal-track-content"></div>
+            
+            <div class="music-player-panel">
+                <div class="player-info">
+                    <div class="vinyl-disc" id="player-vinyl"></div>
+                    <div>
+                        <div style="font-size: 0.8rem; color: #7d5c38; font-weight: bold;">NOW PLAYING FROM ALBUM</div>
+                        <div id="player-track-name" style="font-size: 0.95rem; font-weight: bold; color: #4a2f1a;">Track</div>
+                    </div>
+                </div>
+                <a href="#" id="player-yt-link" target="_blank" class="track-link-btn">
+                    <span>Listen on YT</span> 🔗
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
