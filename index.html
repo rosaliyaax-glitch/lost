@@ -3,53 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Lost Album 📜✨</title>
+    <title>Our Lost Letters 🎀✨</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <canvas id="ambient-canvas"></canvas>
+    <canvas id="sparkle-canvas"></canvas>
 
-    <iframe id="youtube-audio-bridge" src="" allow="autoplay"></iframe>
+    <div id="audio-player-placeholder" style="position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none;"></div>
 
-    <div class="album-container">
-        <div class="wax-seal-container">
-            <img src="album_cover.jpg" alt="Our Album Cover" class="album-cover-img">
-            <div class="wax-seal-stamp">💝</div>
-        </div>
-        
-        <div class="album-header">
-            <h1>THE LOST ALBUM</h1>
-            <p class="album-note">💿 Album Note: HAPPY BIRTHDAY MY LOVEE!!! Thanks for not getting rid of me, even when I was a "dude" named Tenge😭🙏…</p>
+    <div class="cupboard-container">
+        <div class="cupboard-header">
+            <h1>🌸 𝒯𝒽𝑒 𝐿𝑜𝓈𝓉 𝒜𝓁𝒷𝓊𝓂 🌸</h1>
+            <p class="cupboard-subtitle">Select a ribboned scroll from the shelf... ✨</p>
         </div>
 
-        <div class="track-list" id="main-tracklist"></div>
+        <div class="cupboard-shelf" id="scroll-shelf"></div>
+
+        <div class="secret-trigger-area" id="secret-trigger-zone">
+            <button class="pull-me-btn" onclick="revealGrandFinale()">🎀 PULL ME! 🎀</button>
+        </div>
     </div>
 
     <div class="scroll-overlay" id="scroll-modal">
-        <div class="scroll-paper">
-            <div class="scroll-header">
-                <h2 id="modal-track-title">Track Title</h2>
-                <button class="close-btn" onclick="closeScroll()">✕</button>
-            </div>
+        <div class="scroll-paper-wrapper">
+            <div class="scroll-roller top-roller"></div>
             
-            <div class="scroll-body" id="modal-track-content"></div>
-            
-            <div class="music-player-panel">
-                <div class="player-info">
-                    <div class="vinyl-disc" id="player-vinyl"></div>
-                    <div>
-                        <div style="font-size: 0.8rem; color: #7d5c38; font-weight: bold;">NOW PLAYING FROM ALBUM</div>
-                        <div id="player-track-name" style="font-size: 0.95rem; font-weight: bold; color: #4a2f1a;">Track</div>
-                    </div>
+            <div class="scroll-inner-content">
+                <div class="scroll-letter-header">
+                    <h2 id="modal-scroll-title">Scroll Title</h2>
+                    <button class="close-btn" onclick="closeScroll()">✕</button>
                 </div>
-                <a href="#" id="player-yt-link" target="_blank" class="track-link-btn">
-                    <span>Listen on YT</span> 🔗
-                </a>
+                
+                <div class="scroll-letter-body" id="modal-scroll-body"></div>
+                
+                <div class="music-status-tag">
+                    <span class="music-heart-icon">🎵</span> Now Playing: <span id="current-track-label">Track</span>
+                </div>
+            </div>
+
+            <div class="scroll-roller bottom-roller"></div>
+        </div>
+    </div>
+
+    <div class="finale-overlay" id="finale-modal">
+        <div class="finale-card">
+            <button class="close-btn finale-close" onclick="closeFinale()">✕</button>
+            
+            <div class="bouquet-banner">🌸💐🌷 Here is your bouquet of flowers! 🌷💐🌸</div>
+            
+            <div class="finale-photo-frame">
+                <img src="album_cover.jpg" alt="Our Special Memory" class="finale-img">
+                <div class="wax-seal-stamp">💖</div>
+            </div>
+
+            <div class="finale-birthday-note">
+                <p class="hbd-title">🎂 HAPPY BIRTHDAY MY LOVEE!!! 🥳</p>
+                <p class="hbd-sub">Thanks for not getting rid of me, even when I was a "dude" named Tenge😭🙏…</p>
+            </div>
+
+            <div class="finale-promise-letter">
+hehe I promise I'll keep annoying you, bullying you with my terrible jokes, and calling you names you definitely don't deserve 💀
+But more importantly, I'll keep being there for you, cheering you on, and reminding you that you're worth more than you think.
+
+So here's to all the memories we've already made... and all the ones we haven't written yet. 🌸
             </div>
         </div>
     </div>
 
+    <script src="https://www.youtube.com/iframe_api"></script>
     <script src="script.js"></script>
 </body>
 </html>
