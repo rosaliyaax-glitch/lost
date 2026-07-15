@@ -1,4 +1,4 @@
-/* --- Core Styling & Vintage Aesthetics --- */
+/* --- Core Styling & Pastel Soft Pink Aesthetic --- */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,20 +6,22 @@
 }
 
 body {
-    background: radial-gradient(circle, #2c1d11 0%, #170f0a 100%);
-    color: #4a3319;
-    font-family: 'Georgia', serif;
+    background: #fff0f5; /* Pastel soft lavender blush */
+    background-image: radial-gradient(#ffd1dc 20%, transparent 20%), radial-gradient(#ffd1dc 20%, transparent 20%);
+    background-size: 30px 30px;
+    background-position: 0 0, 15px 15px;
+    color: #8b5a6c;
+    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Georgia', serif;
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 30px 20px;
 }
 
-/* Ambient Dust/Petal Layer */
-#ambient-canvas {
+#sparkle-canvas {
     position: fixed;
     top: 0;
     left: 0;
@@ -29,316 +31,415 @@ body {
     z-index: 1;
 }
 
-/* --- Main Album Container --- */
-.album-container {
+/* --- Kawaii Cupboard Cabinet Structure --- */
+.cupboard-container {
     width: 100%;
-    max-width: 750px;
-    background: #f4ebd0;
-    border: 12px solid #3d2516;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.8), inset 0 0 40px rgba(90, 50, 20, 0.3);
-    border-radius: 4px;
-    padding: 40px 30px;
+    max-width: 800px;
+    background: rgba(255, 245, 247, 0.95);
+    border: 8px solid #ffb7c5;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(255, 183, 197, 0.5), inset 0 0 20px rgba(255, 183, 197, 0.3);
+    padding: 35px 25px;
     position: relative;
     z-index: 2;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Album Cover Photo & Wax Seal Wrapper */
-.wax-seal-container {
-    position: absolute;
-    top: -45px;
-    right: 40px;
-    width: 90px;
+.cupboard-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.cupboard-header h1 {
+    font-size: 2.3rem;
+    color: #ff69b4;
+    text-shadow: 2px 2px #fff5f7;
+    margin-bottom: 8px;
+}
+
+.cupboard-subtitle {
+    font-style: italic;
+    font-size: 0.95rem;
+    color: #b07289;
+}
+
+/* Cabinet Display Shelf Layout */
+.cupboard-shelf {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px 20px;
+    background: #ffe4e1; /* Misty Rose wood deck backing */
+    border-bottom: 12px solid #ffb7c5;
+    border-radius: 10px;
+    padding: 30px 20px;
+    box-shadow: inset 0 -10px 10px rgba(219, 145, 159, 0.2);
+}
+
+/* --- Individual Rolled Ribbon Scroll Modules --- */
+.scroll-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.scroll-item:hover {
+    transform: translateY(-10px) scale(1.05);
+}
+
+.scroll-graphic-container {
+    width: 65px;
     height: 90px;
-    transform: rotate(-8deg);
-    z-index: 5;
+    background: #fff9e6;
+    border: 3px solid #ffb7c5;
+    border-radius: 30px;
+    position: relative;
+    box-shadow: 0 8px 15px rgba(219, 145, 159, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.2s;
 }
 
-.album-cover-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border: 4px solid #fff;
-    border-radius: 4px;
-    box-shadow: 2px 6px 15px rgba(0,0,0,0.5);
+.scroll-item:hover .scroll-graphic-container {
+    background: #fff3cc;
 }
 
-.wax-seal-stamp {
+/* Decorative Ribbon Bands Wrapped Around Scrolls */
+.scroll-ribbon-band {
     position: absolute;
-    bottom: -10px;
-    right: -10px;
-    width: 35px;
-    height: 35px;
-    background: #8b1e1e;
-    border-radius: 50%;
-    box-shadow: 1px 2px 5px rgba(0,0,0,0.4);
+    width: 100%;
+    height: 22px;
+    background: #ff69b4;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #d4af37;
-    font-size: 14px;
-    border: 1px dashed #701414;
-}
-
-.album-header {
-    text-align: center;
-    border-bottom: 2px dashed #a08260;
-    padding-bottom: 20px;
-    margin-bottom: 30px;
-}
-
-.album-header h1 {
-    font-size: 2.5rem;
-    color: #5c3a21;
-    font-family: 'Times New Roman', serif;
-    letter-spacing: 2px;
-    margin-bottom: 5px;
-}
-
-.album-note {
-    font-style: italic;
-    font-size: 0.95rem;
-    color: #7d5c38;
-    padding: 0 10px;
-}
-
-/* --- Tracklist System --- */
-.track-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.track-item {
-    background: rgba(235, 220, 190, 0.6);
-    border: 1px solid #dcd1b4;
-    border-radius: 6px;
-    padding: 15px 20px;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.track-item::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 5px;
-    background: #a08260;
-    transition: all 0.3s ease;
-}
-
-.track-item:hover {
-    transform: translateX(8px);
-    background: rgba(225, 205, 170, 0.9);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-}
-
-.track-item:hover::before {
-    background: #c39b62;
-    width: 8px;
-}
-
-.track-info {
-    display: flex;
-    flex-direction: column;
-}
-
-.track-title {
-    font-size: 1.15rem;
+    color: #fff;
+    font-size: 11px;
     font-weight: bold;
-    color: #5c3a21;
-    display: flex;
-    align-items: center;
-    gap: 8px;
 }
 
-.track-subtitle {
+.scroll-ribbon-bow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.4rem;
+    pointer-events: none;
+    margin-top: -2px;
+}
+
+.scroll-flower-tag {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    z-index: 2;
+}
+
+.scroll-title-label {
+    margin-top: 12px;
     font-size: 0.85rem;
-    color: #8c7355;
-    margin-top: 4px;
+    font-weight: bold;
+    color: #8b5a6c;
+    text-align: center;
+    background: #fff;
+    padding: 3px 8px;
+    border-radius: 12px;
+    border: 1.5px solid #ffb7c5;
 }
 
-.track-flower-icon {
-    font-size: 1.2rem;
-}
-
-/* --- The Scroll (Overlay Panel) --- */
+/* --- Scroll Unrolling Modal Engine Layout --- */
 .scroll-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(23, 15, 10, 0.85);
+    background: rgba(255, 240, 245, 0.85);
     z-index: 10;
     display: none;
     justify-content: center;
     align-items: center;
     padding: 20px;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(5px);
 }
 
-.scroll-paper {
-    background: #f7f1e1;
+.scroll-paper-wrapper {
     width: 100%;
-    max-width: 650px;
-    max-height: 85vh;
-    border-left: 20px solid #e6dcc5;
-    border-right: 20px solid #e6dcc5;
-    box-shadow: 0 0 50px rgba(0,0,0,0.6);
+    max-width: 600px;
     position: relative;
     display: flex;
     flex-direction: column;
-    animation: unfoldScroll 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
-    border-radius: 4px;
-    background-image: radial-gradient(circle at 50% 50%, transparent 60%, rgba(210,190,160,0.2) 100%);
+    animation: unrollScrollVertical 0.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
 }
 
-@keyframes unfoldScroll {
-    0% { transform: scaleY(0.01) scaleX(0.8); opacity: 0; }
-    100% { transform: scaleY(1) scaleX(1); opacity: 1; }
+@keyframes unrollScrollVertical {
+    0% { transform: scaleY(0.05); opacity: 0; }
+    100% { transform: scaleY(1); opacity: 1; }
 }
 
-.scroll-header {
-    padding: 25px 30px 10px 30px;
+.scroll-inner-content {
+    background: #fffdf7;
+    border-left: 6px double #ffb7c5;
+    border-right: 6px double #ffb7c5;
+    padding: 30px;
+    min-height: 250px;
+    max-height: 70vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.scroll-roller {
+    height: 16px;
+    background: #ffe4e1;
+    border: 3px solid #ffb7c5;
+    border-radius: 8px;
+    width: 102%;
+    margin-left: -1%;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+}
+
+.scroll-letter-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px dashed #cfbf9f;
+    border-bottom: 2px dashed #ffb7c5;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
 }
 
-.scroll-header h2 {
-    font-family: 'Times New Roman', serif;
-    color: #4a2f1a;
-    font-size: 1.6rem;
+.scroll-letter-header h2 {
+    color: #ff69b4;
+    font-size: 1.3rem;
 }
 
 .close-btn {
-    background: #8b1e1e;
+    background: #ff69b4;
     color: #fff;
     border: none;
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     cursor: pointer;
     font-weight: bold;
-    font-size: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    transition: background 0.2s;
+    box-shadow: 0 2px 5px rgba(255, 105, 180, 0.4);
+    transition: transform 0.2s, background 0.2s;
 }
 
 .close-btn:hover {
-    background: #b32424;
+    transform: rotate(90deg);
+    background: #ff1493;
 }
 
-.scroll-body {
-    padding: 30px;
-    overflow-y: auto;
-    font-size: 1.1rem;
+.scroll-letter-body {
+    font-size: 1.05rem;
     line-height: 1.6;
-    color: #382515;
+    color: #6b4453;
     white-space: pre-wrap;
-    flex-grow: 1;
+    padding-bottom: 20px;
 }
 
-/* --- Audio Player System --- */
-.music-player-panel {
-    padding: 15px 30px;
-    background: #ebe0c7;
-    border-top: 1px dashed #cfbf9f;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-}
-
-.player-info {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.vinyl-disc {
-    width: 45px;
-    height: 45px;
-    background: #111;
-    border-radius: 50%;
-    border: 5px solid #333;
-    box-shadow: 0 0 10px rgba(0,0,0,0.4);
-    position: relative;
-    animation: spin 3s linear infinite;
-    animation-play-state: paused;
-}
-
-.vinyl-disc::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 10px;
-    height: 10px;
-    background: #ebe0c7;
-    border-radius: 50%;
-}
-
-@keyframes spin {
-    100% { transform: rotate(360deg); }
-}
-
-.track-link-btn {
-    background: #5c3a21;
-    color: #f4ebd0;
+.music-status-tag {
+    background: #fff0f5;
+    border: 1.5px solid #ffb7c5;
+    border-radius: 15px;
     padding: 8px 15px;
-    border-radius: 20px;
-    text-decoration: none;
     font-size: 0.85rem;
-    font-weight: bold;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 6px;
-    transition: background 0.2s;
-    border: 1px solid #4a2f1a;
+    font-weight: bold;
+    color: #ff69b4;
 }
 
-.track-link-btn:hover {
-    background: #764b2b;
+.music-heart-icon {
+    animation: heartThrob 1.2s infinite alternate;
 }
 
-#youtube-audio-bridge {
+@keyframes heartThrob {
+    100% { transform: scale(1.15); }
+}
+
+/* --- Secret Pull Mechanical System Buttons --- */
+.secret-trigger-area {
+    margin-top: 35px;
+    text-align: center;
+    display: none; 
+}
+
+.pull-me-btn {
+    background: linear-gradient(135deg, #ff69b4 0%, #ffb7c5 100%);
+    color: white;
+    border: 3px solid #fff;
+    border-radius: 30px;
+    padding: 15px 40px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.4);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: floatingPulse 2s infinite ease-in-out;
+}
+
+.pull-me-btn:hover {
+    transform: scale(1.1) rotate(-2deg);
+    box-shadow: 0 12px 25px rgba(255, 105, 180, 0.6);
+}
+
+@keyframes floatingPulse {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+/* --- Grand Birthday Finale Panel Architecture --- */
+.finale-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 228, 225, 0.9);
+    z-index: 20;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.finale-card {
+    background: #fff5f7;
+    width: 100%;
+    max-width: 650px;
+    border: 6px solid #ffb7c5;
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(255, 183, 197, 0.6);
+    padding: 35px 25px;
+    position: relative;
+    text-align: center;
+    animation: giftPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes giftPop {
+    0% { transform: scale(0.6); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.finale-close {
     position: absolute;
-    width: 1px;
-    height: 1px;
-    opacity: 0;
-    pointer-events: none;
+    top: 15px;
+    right: 15px;
 }
 
-.scroll-body::-webkit-scrollbar {
+.bouquet-banner {
+    font-size: 1.35rem;
+    font-weight: bold;
+    color: #ff69b4;
+    margin-bottom: 25px;
+    background: #fff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 2px dashed #ffb7c5;
+    display: inline-block;
+}
+
+.finale-photo-frame {
+    width: 190px;
+    height: 190px;
+    margin: 0 auto 25px auto;
+    position: relative;
+    transform: rotate(-3deg);
+}
+
+.finale-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 8px solid white;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.wax-seal-stamp {
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    width: 45px;
+    height: 45px;
+    background: #ff1493;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+    border: 2px dashed #ffb7c5;
+}
+
+.finale-birthday-note {
+    background: #fff;
+    padding: 20px;
+    border-radius: 16px;
+    border: 2px solid #ffffe0; 
+    margin-bottom: 25px;
+    box-shadow: 0 4px 10px rgba(255, 183, 197, 0.1);
+}
+
+.hbd-title {
+    font-size: 1.45rem;
+    font-weight: bold;
+    color: #ff1493;
+    margin-bottom: 8px;
+}
+
+.hbd-sub {
+    font-style: italic;
+    font-size: 0.95rem;
+    color: #b07289;
+    line-height: 1.4;
+}
+
+.finale-promise-letter {
+    background: #fffbfa;
+    border-left: 5px solid #ff69b4;
+    padding: 20px;
+    border-radius: 0 16px 16px 0;
+    text-align: left;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #5c3b47;
+    white-space: pre-wrap;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
+}
+
+.scroll-inner-content::-webkit-scrollbar, .finale-card::-webkit-scrollbar {
     width: 6px;
 }
-.scroll-body::-webkit-scrollbar-track {
-    background: transparent;
-}
-.scroll-body::-webkit-scrollbar-thumb {
-    background: #cfbf9f;
+.scroll-inner-content::-webkit-scrollbar-thumb, .finale-card::-webkit-scrollbar-thumb {
+    background: #ffb7c5;
     border-radius: 4px;
 }
 
-@media (max-width: 600px) {
-    .album-container { padding: 25px 15px; }
-    .wax-seal-container { top: -35px; right: 20px; width: 70px; height: 70px; }
-    .album-header h1 { font-size: 1.8rem; }
-    .track-item { padding: 12px 15px; }
-    .scroll-paper { max-height: 90vh; border-left: 10px solid #e6dcc5; border-right: 10px solid #e6dcc5; }
-    .scroll-body { padding: 20px; font-size: 1rem; }
+@media (max-width: 650px) {
+    .cupboard-shelf { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .cupboard-header h1 { font-size: 1.75rem; }
+    .finale-card { padding: 25px 15px; }
+    .finale-photo-frame { width: 150px; height: 150px; }
 }
+   
+  
+
+  
+
+
+
+ 
+
